@@ -1,5 +1,5 @@
 import AddTransactionButton from "./components/AddTransactionButton";
-import Dashboard from "./components/Dashboard";
+import Dashboard from "./components/Dashboard/Dashboard";
 import Sidebar from "./components/Sidebar";
 import "./index.css";
 import { Routes, Route } from "react-router-dom";

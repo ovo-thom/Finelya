@@ -5,7 +5,7 @@ import { Routes, Route } from "react-router-dom";
 
 function App() {
   return (
-    <div>
+    <div className="bg-gray-200">
     <Sidebar />
     </div>
   )

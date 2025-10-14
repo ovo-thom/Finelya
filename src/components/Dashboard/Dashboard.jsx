@@ -1,3 +1,4 @@
+import CategoryChart from "./CategoryChart";
 import TransactionsTable from "./TransactionsTable";
 
 export default function Dashboard() {
@@ -10,7 +11,9 @@ export default function Dashboard() {
         <div className="border-2 border-gray-300 col-span-6 bg-white rounded-xl">
           <TransactionsTable />
         </div>
-        <div className="border-2 border-gray-300 col-span-4 bg-white rounded-xl"></div>
+        <div className="border-2 border-gray-300 col-span-4 bg-white rounded-xl">
+          <CategoryChart />
+        </div>
         <div className="border-2 border-gray-300 col-span-5 bg-white rounded-xl"></div>
         <div className="border-2 border-gray-300 col-span-5 bg-white rounded-xl"></div>
       </div>

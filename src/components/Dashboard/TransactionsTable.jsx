@@ -43,6 +43,14 @@ export default function TransactionsTable() {
               -150,00 €
             </td>
           </tr>
+          <tr>
+            <td className="border-b border-gray-100 px-4 py-2">10 avr. 2024</td>
+            <td className="border-b border-gray-100 px-4 py-2">Nourriture</td>
+            <td className="border-b border-gray-100 px-4 py-2">Nourriture</td>
+            <td className="border-b border-gray-100 px-4 py-2 text-green-600 font-semibold">
+              +120,00 €
+            </td>
+          </tr>
         </tbody>
       </table>
     </div>

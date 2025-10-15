@@ -1,6 +1,6 @@
 import CategoryChart from "./CategoryChart";
-import TotalBalanceCard from "./TotalBalanceCard";
 import TransactionsTable from "./TransactionsTable";
+import StatCard from "./StatCard";
 
 export default function Dashboard() {
   return (
@@ -16,9 +16,11 @@ export default function Dashboard() {
           <CategoryChart />
         </div>
         <div className="border-2 border-gray-300 col-span-5 row-span-3 bg-white rounded-xl">
-          <TotalBalanceCard />
+          <StatCard title="Solde total" value="+1.400,000 €" />
         </div>
-        <div className="border-2 border-gray-300 col-span-5 row-span-3 bg-white rounded-xl"></div>
+        <div className="border-2 border-gray-300 col-span-5 row-span-3 bg-white rounded-xl">
+          <StatCard title="Dépense moyenne" value="466,67 €" />
+        </div>
       </div>
     </div>
   );

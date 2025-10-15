@@ -3,7 +3,7 @@ import TransactionsTable from "./TransactionsTable";
 
 export default function Dashboard() {
   return (
-    <div className="">
+    <div className="max-w-6xl w-full">
       <h1 className="text-xl sm:text-3xl md:text-4xl font-semibold mb-6">
         Tableau de bord des finances personnelles
       </h1>

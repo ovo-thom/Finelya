@@ -26,10 +26,12 @@ const options = {
 
 export default function CategoryChart() {
   return (
-    <div className="p-5 flex flex-col w-full max-w-md mx-auto">
-      <h2 className="font-semibold mb-4 text-left lg:text-lg">Dépenses par catégorie</h2>
+    <div className="p-0md:p-5 flex flex-col w-full max-w-md mx-auto">
+      <h2 className="font-semibold mb-4 text-left lg:text-lg">
+        Dépenses par catégorie
+      </h2>
       <div className="flex justify-center items-center w-full mt-2">
-        <div className="w-32 h-32 lg:w-56 lg:h-56 2xl:w-80 2xl:h-80">
+        <div className="w-36 h-36 lg:w-56 lg:h-56 2xl:w-80 2xl:h-80">
           <Pie data={data} options={options} />
         </div>
       </div>

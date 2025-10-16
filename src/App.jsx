@@ -8,7 +8,7 @@ function App() {
   return (
     <div className="flex min-h-screen bg-[#fafbfe]">
       <Sidebar />
-      <div className="flex-1 p-8">
+      <div className="flex-1 p-1 lg:p-8">
         <div className="flex justify-end mb-8">
           <AddTransactionButton />
         </div>

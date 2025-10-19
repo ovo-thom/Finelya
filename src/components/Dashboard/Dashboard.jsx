@@ -5,7 +5,7 @@ import StatCard from "./StatCard";
 export default function Dashboard() {
   return (
     <div className="max-w-6xl w-full mx-auto px-4">
-      <h1 className="text-xl sm:text-3xl md:text-4xl font-semibold mb-6">
+      <h1 className="text-xl sm:text-2xl xl:text-3xl font-semibold mb-6">
         Tableau de bord des finances personnelles
       </h1>
       <div className="grid grid-cols-1 md:grid-cols-10 md:grid-rows-10 gap-8">

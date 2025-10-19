@@ -3,15 +3,16 @@ import { RxCross2 } from "react-icons/rx";
 
 export default function Modal({ onClose }) {
   return createPortal(
-    <div className="fixed inset-0 bg-black/60 flex items-center justify-center z-50">
-      <form className="bg-white p-6 rounded-xl w-[35%]">
+    <div className="fixed inset-0 bg-black/60 flex items-center justify-center z-50 overflow-hidden">
+      <div className="bg-white p-4 md:p-6 rounded-xl w-full max-w-xs sm:max-w-md  shadow-lg overflow-hidden">
+      <form className="max-h-[80vh] overflow-y-auto px-2">
         <div className="flex justify-between items-center">
-          <h3 className="text-2xl font-semibold">Ajouter une transaction</h3>
+          <h3 className="text-xl md:text-2xl font-semibold">Ajouter une transaction</h3>
           <span
             onClick={onClose}
-            className="text-xl text-gray-500 cursor-pointer"
+            className="text-xl md:text-2xl text-gray-500 cursor-pointer"
           >
-            <RxCross2 />
+            <RxCross2 className="hover:rotate-180" />
           </span>
         </div>
         <div className="my-5">
@@ -71,11 +72,12 @@ export default function Modal({ onClose }) {
           >
             Annuler
           </button>
-          <button className="border-2 rounded-xl py-1 px-20 bg-[#119560] text-gray-50 border-transparent cursor-pointer">
+          <button className="border-2 rounded-xl py-1 px-12 sm:px-16 md:px-20 bg-[#119560] text-gray-50 border-transparent cursor-pointer">
             Ajouter
           </button>
         </div>
       </form>
+      </div>
     </div>,
     document.body
   );

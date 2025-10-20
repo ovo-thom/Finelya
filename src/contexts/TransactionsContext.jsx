@@ -1,9 +1,10 @@
-import { createContext, useContext, useState } from "react";
+import { createContext, useContext } from "react";
+import { useLocalStorage } from "@uidotdev/usehooks";
 
 const TransactionsContext = createContext();
 
 export function TransactionsProvider({ children }) {
-  const [transactions, setTransactions] = useState([]);
+  const [transactions, setTransactions] = useLocalStorage("transactions", []);
 
   const addTransaction = (transaction) => {
     const newTransaction = {

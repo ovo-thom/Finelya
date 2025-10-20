@@ -14,10 +14,14 @@ export function TransactionsProvider({ children }) {
   };
 
   const deleteTransaction = (id) => {
-    setTransactions((prev) => prev.filter((transaction) => transaction.id !== id));
+    setTransactions((prev) =>
+      prev.filter((transaction) => transaction.id !== id)
+    );
   };
   return (
-    <TransactionsContext.Provider value={{ transactions, addTransaction, deleteTransaction }}>
+    <TransactionsContext.Provider
+      value={{ transactions, addTransaction, deleteTransaction }}
+    >
       {children}
     </TransactionsContext.Provider>
   );

@@ -4,7 +4,7 @@ export default function TransactionsTable() {
   const { transactions } = useTransactions();
 
   console.log(transactions);
-  
+
   return (
     <div className="flex flex-col mb-6 w-full">
       <label htmlFor="period" className="sr-only">
@@ -39,24 +39,31 @@ export default function TransactionsTable() {
           </thead>
 
           <tbody>
-  {transactions.map((transaction) => (
-    <tr key={transaction.id}>
-      <td className="border-b border-gray-100 px-3 md:px-4 py-2 whitespace-nowrap">
-        {transaction.date}
-      </td>
-      <td className="border-b border-gray-100 px-3 md:px-4 py-2 max-w-[220px] break-words">
-        {transaction.description}
-      </td>
-      <td className="border-b border-gray-100 px-3 md:px-4 py-2 max-w-[160px] break-words">
-        {transaction.categorie}
-      </td>
-      <td className="border-b border-gray-100 px-3 md:px-4 py-2 text-right whitespace-nowrap font-semibold"
-      >
-        {Number(transaction.montant).toLocaleString("fr-FR", { style: "currency", currency: "EUR" })}
-      </td>
-    </tr>
-  ))}
-</tbody>
+            {transactions.map((transaction) => (
+              <tr key={transaction.id}>
+                <td className="border-b border-gray-100 px-3 md:px-4 py-2 whitespace-nowrap">
+                  {transaction.date}
+                </td>
+                <td className="border-b border-gray-100 px-3 md:px-4 py-2 max-w-[220px] break-words">
+                  {transaction.description}
+                </td>
+                <td className="border-b border-gray-100 px-3 md:px-4 py-2 max-w-[160px] break-words">
+                  {transaction.categorie}
+                </td>
+                <td
+                  className={`... ${
+                    transaction.montant >= 0 ? "text-green-600" : "text-red-600"
+                  }`}
+                >
+                  {transaction.montant > 0 ? "+" : "-"}
+                  {Math.abs(transaction.montant).toLocaleString("fr-FR", {
+                    style: "currency",
+                    currency: "EUR",
+                  })}
+                </td>
+              </tr>
+            ))}
+          </tbody>
         </table>
       </div>
     </div>

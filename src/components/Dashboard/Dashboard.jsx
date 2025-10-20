@@ -1,8 +1,14 @@
 import CategoryChart from "./CategoryChart";
 import TransactionsTable from "./TransactionsTable";
 import StatCard from "./StatCard";
+import { useTransactions } from "../../contexts/TransactionsContext";
 
 export default function Dashboard() {
+  const { transactions } = useTransactions();
+  console.log(transactions);
+  // const salaire = transactions.find(tx => tx.categorie === "Salaire");
+  const total = transactions.reduce((sum, tx) => sum + Number(tx.montant), 0);
+
   return (
     <div className="max-w-6xl w-full mx-auto px-4">
       <h1 className="text-xl sm:text-2xl xl:text-3xl font-semibold mb-6">
@@ -16,7 +22,13 @@ export default function Dashboard() {
           <CategoryChart />
         </div>
         <div className="border-2 border-gray-300 md:col-span-5 md:row-span-3 bg-white rounded-xl p-4 h-full">
-          <StatCard title="Solde total" value="+1.400,000 €" />
+          <StatCard
+            title="Solde total"
+            value={total.toLocaleString("fr-FR", {
+              style: "currency",
+              currency: "EUR",
+            })}
+          />
         </div>
         <div className="border-2 border-gray-300 md:col-span-5 md:row-span-3 bg-white rounded-xl p-4 h-full">
           <StatCard title="Dépense moyenne" value="466,67 €" />

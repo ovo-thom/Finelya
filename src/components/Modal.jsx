@@ -9,15 +9,21 @@ export default function Modal({ onClose }) {
   const [date, setDate] = useState("");
   const [description, setDescription] = useState("");
   const { addTransaction } = useTransactions();
+  const [type, setType] = useState("revenu");
 
   const handleSubmit = (e) => {
     e.preventDefault();
     if (!montant || isNaN(Number(montant)) || Number(montant) === 0) return;
+    const montantFinal =
+      type === "dépense"
+        ? -Math.abs(Number(montant))
+        : Math.abs(Number(montant));
     const transaction = {
-      montant: Number(montant),
+      montant: montantFinal,
       categorie,
       date,
       description,
+      type,
     };
     addTransaction(transaction);
     onClose();
@@ -43,10 +49,26 @@ export default function Modal({ onClose }) {
           </div>
           <div className="my-5">
             <p className="mb-2">Type</p>
-            <button className="border-2 border-gray-300 py-1 px-4 rounded-xl font-semibold mr-2 hover:bg-[#4b2bc2] hover:text-gray-50 hover:border-transparent duration-200">
+            <button
+              type="button"
+              onClick={() => setType("revenu")}
+              className={`border-2 py-1 px-4 rounded-xl font-semibold mr-2 ${
+                type === "revenu"
+                  ? "bg-violet-600 text-white border-transparent"
+                  : "bg-white text-gray-800 border-gray-300"
+              }`}
+            >
               Revenu
             </button>
-            <button className="border-2 border-gray-300 py-1 px-4 rounded-xl font-semibold hover:bg-[#4b2bc2] hover:text-gray-50 hover:border-transparent duration-200">
+            <button
+              type="button"
+              onClick={() => setType("dépense")}
+              className={`border-2 py-1 px-4 rounded-xl font-semibold ${
+                type === "dépense"
+                  ? "bg-violet-600 text-white border-transparent"
+                  : "bg-white text-gray-800 border-gray-300"
+              }`}
+            >
               Dépense
             </button>
           </div>

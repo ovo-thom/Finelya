@@ -1,6 +1,7 @@
 import { createPortal } from "react-dom";
 import { RxCross2 } from "react-icons/rx";
 import { useTransactions } from "../contexts/TransactionsContext";
+import { useState } from "react";
 
 export default function Modal({ onClose }) {
   const [montant, setMontant] = useState("");
@@ -11,8 +12,9 @@ export default function Modal({ onClose }) {
 
   const handleSubmit = (e) => {
     e.preventDefault();
+    if (!montant || isNaN(Number(montant)) || Number(montant) === 0) return;
     const transaction = {
-      montant,
+      montant: Number(montant),
       categorie,
       date,
       description,

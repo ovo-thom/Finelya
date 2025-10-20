@@ -1,4 +1,10 @@
+import { useTransactions } from "../../contexts/TransactionsContext";
+
 export default function TransactionsTable() {
+  const { transactions } = useTransactions();
+
+  console.log(transactions);
+  
   return (
     <div className="flex flex-col mb-6 w-full">
       <label htmlFor="period" className="sr-only">
@@ -33,51 +39,24 @@ export default function TransactionsTable() {
           </thead>
 
           <tbody>
-            <tr>
-              <td className="border-b border-gray-100 px-3 md:px-4 py-2 whitespace-nowrap">
-                3 avr. 2024
-              </td>
-              <td className="border-b border-gray-100 px-3 md:px-4 py-2 max-w-[220px] break-words">
-                Salaire
-              </td>
-              <td className="border-b border-gray-100 px-3 md:px-4 py-2 max-w-[160px] break-words">
-                Salaire
-              </td>
-              <td className="border-b border-gray-100 px-3 md:px-4 py-2 text-right whitespace-nowrap text-green-600 font-semibold">
-                +2 800,00 €
-              </td>
-            </tr>
-
-            <tr>
-              <td className="border-b border-gray-100 px-3 md:px-4 py-2 whitespace-nowrap">
-                10 avr. 2024
-              </td>
-              <td className="border-b border-gray-100 px-3 md:px-4 py-2 max-w-[220px] break-words">
-                Nourriture
-              </td>
-              <td className="border-b border-gray-100 px-3 md:px-4 py-2 max-w-[160px] break-words">
-                Nourriture
-              </td>
-              <td className="border-b border-gray-100 px-3 md:px-4 py-2 text-right whitespace-nowrap text-red-600 font-semibold">
-                -150,00 €
-              </td>
-            </tr>
-
-            <tr>
-              <td className="border-b border-gray-100 px-3 md:px-4 py-2 whitespace-nowrap">
-                18 avr. 2024
-              </td>
-              <td className="border-b border-gray-100 px-3 md:px-4 py-2 max-w-[220px] break-words">
-                Logement
-              </td>
-              <td className="border-b border-gray-100 px-3 md:px-4 py-2 max-w-[160px] break-words">
-                Logement
-              </td>
-              <td className="border-b border-gray-100 px-3 md:px-4 py-2 text-right whitespace-nowrap text-red-600 font-semibold">
-                -1 200,00 €
-              </td>
-            </tr>
-          </tbody>
+  {transactions.map((transaction) => (
+    <tr key={transaction.id}>
+      <td className="border-b border-gray-100 px-3 md:px-4 py-2 whitespace-nowrap">
+        {transaction.date}
+      </td>
+      <td className="border-b border-gray-100 px-3 md:px-4 py-2 max-w-[220px] break-words">
+        {transaction.description}
+      </td>
+      <td className="border-b border-gray-100 px-3 md:px-4 py-2 max-w-[160px] break-words">
+        {transaction.categorie}
+      </td>
+      <td className="border-b border-gray-100 px-3 md:px-4 py-2 text-right whitespace-nowrap font-semibold"
+      >
+        {Number(transaction.montant).toLocaleString("fr-FR", { style: "currency", currency: "EUR" })}
+      </td>
+    </tr>
+  ))}
+</tbody>
         </table>
       </div>
     </div>

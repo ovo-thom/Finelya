@@ -5,10 +5,8 @@ import { useTransactions } from "../../contexts/TransactionsContext";
 
 export default function Dashboard() {
   const { transactions } = useTransactions();
-  console.log(transactions);
-  // const salaire = transactions.find(tx => tx.categorie === "Salaire");
+  // console.log(transactions);
   const total = transactions.reduce((sum, tx) => sum + Number(tx.montant), 0);
-  console.log(total);
   const depenses = transactions.filter((depense) => depense.montant < 0);
   const average = depenses.length
     ? depenses.reduce((sum, tx) => sum + Math.abs(Number(tx.montant)), 0) /

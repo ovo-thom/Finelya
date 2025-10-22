@@ -8,6 +8,12 @@ export default function Dashboard() {
   console.log(transactions);
   // const salaire = transactions.find(tx => tx.categorie === "Salaire");
   const total = transactions.reduce((sum, tx) => sum + Number(tx.montant), 0);
+  console.log(total);
+  const depenses = transactions.filter((depense) => depense.montant < 0);
+  const average = depenses.length
+    ? depenses.reduce((sum, tx) => sum + Math.abs(Number(tx.montant)), 0) /
+      depenses.length
+    : 0;
 
   return (
     <div className="max-w-6xl w-full mx-auto px-4">
@@ -31,7 +37,13 @@ export default function Dashboard() {
           />
         </div>
         <div className="border-2 border-gray-300 md:col-span-5 md:row-span-3 bg-white rounded-xl p-4 h-full">
-          <StatCard title="Dépense moyenne" value="466,67 €" />
+          <StatCard
+            title="Dépense moyenne"
+            value={average.toLocaleString("fr-FR", {
+              style: "currency",
+              currency: "EUR",
+            })}
+          />
         </div>
       </div>
     </div>

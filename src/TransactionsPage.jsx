@@ -11,6 +11,8 @@ export default function TransactionsPage() {
     year: "numeric",
   });
 
+  const amount = transactions[0].montant;
+
   return (
     <div className="max-w-6xl mx-auto px-4 py-8">
       <h2 className="text-xl sm:text-3xl md:text-4xl font-semibold mb-6">
@@ -24,7 +26,13 @@ export default function TransactionsPage() {
           <StatCard title="Dernière transaction" value={lastDate} />
         </div>
         <div className="bg-white rounded-xl border-2 border-gray-300 ">
-          <StatCard title="Montant" value="+ 280,00 €" />
+          <StatCard
+            title="Montant"
+            value={amount.toLocaleString("fr-FR", {
+              style: "currency",
+              currency: "EUR",
+            })}
+          />
         </div>
       </div>
     </div>

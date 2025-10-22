@@ -5,7 +5,7 @@ import { useTransactions } from "../../contexts/TransactionsContext";
 
 export default function Dashboard() {
   const { transactions } = useTransactions();
-  // console.log(transactions);
+  
   const total = transactions.reduce((sum, tx) => sum + Number(tx.montant), 0);
   const depenses = transactions.filter((depense) => depense.montant < 0);
   const average = depenses.length

@@ -1,7 +1,8 @@
 import { useTransactions } from "../../contexts/TransactionsContext";
+import { FiTrash2 } from "react-icons/fi";
 
 export default function TransactionsTable() {
-  const { transactions } = useTransactions();
+  const { transactions, deleteTransaction } = useTransactions();
 
   console.log(transactions);
 
@@ -32,9 +33,12 @@ export default function TransactionsTable() {
               <th className="border-b border-gray-200 px-4 py-2 text-left">
                 Catégorie
               </th>
-              <th className="border-b border-gray-200 px-4 py-2 text-right">
+              <th className="border-b border-gray-200 px-4 py-2 text-left">
                 Montant
               </th>
+              {/* <th>
+                Supprimer
+              </th> */}
             </tr>
           </thead>
 
@@ -60,6 +64,12 @@ export default function TransactionsTable() {
                     style: "currency",
                     currency: "EUR",
                   })}
+                </td>
+                <td
+                  onClick={() => deleteTransaction(transaction.id)}
+                  className="text-lg cursor-pointer"
+                >
+                  <FiTrash2 />
                 </td>
               </tr>
             ))}

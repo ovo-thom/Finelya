@@ -19,7 +19,7 @@ export default function TransactionsPage() {
         Transactions
       </h2>
       <div className="bg-white rounded-xl border-2 border-gray-300 p-4">
-        <TransactionsTable />
+        <TransactionsTable showDelete={true} />
       </div>
       <div className="w-full rounded-xl mt-5 grid grid-cols-1 md:grid-cols-2 gap-5">
         <div className="bg-white rounded-xl border-2 border-gray-300 ">

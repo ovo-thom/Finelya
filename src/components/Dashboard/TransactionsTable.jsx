@@ -4,8 +4,6 @@ import { FiTrash2 } from "react-icons/fi";
 export default function TransactionsTable() {
   const { transactions, deleteTransaction } = useTransactions();
 
-  console.log(transactions);
-
   return (
     <div className="flex flex-col mb-6 w-full">
       <label htmlFor="period" className="sr-only">
@@ -36,9 +34,6 @@ export default function TransactionsTable() {
               <th className="border-b border-gray-200 px-4 py-2 text-left">
                 Montant
               </th>
-              {/* <th>
-                Supprimer
-              </th> */}
             </tr>
           </thead>
 

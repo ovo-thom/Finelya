@@ -1,19 +1,8 @@
 import { Chart as ChartJS, ArcElement, Tooltip, Legend } from "chart.js";
 import { Pie } from "react-chartjs-2";
+import { useTransactions } from "../../contexts/TransactionsContext";
 
 ChartJS.register(ArcElement, Tooltip, Legend);
-
-const data = {
-  labels: ["Salaire", "Nourriture", "Logement", "Factures"],
-  datasets: [
-    {
-      label: "# of Votes",
-      data: [12, 19, 3, 5, 2, 3],
-      backgroundColor: ["#7e21c9", "#2ecc71", "#4b2bc2", "#f7b731"],
-      borderWidth: 0,
-    },
-  ],
-};
 
 const options = {
   plugins: {
@@ -25,6 +14,46 @@ const options = {
 };
 
 export default function CategoryChart() {
+  const { transactions } = useTransactions();
+
+  const uniqueCategories = [...new Set(transactions.map((tx) => tx.categorie))];
+  const sums = uniqueCategories.map((cat) =>
+    transactions
+      .filter((tx) => tx.categorie === cat)
+      .reduce((sum, tx) => sum + Math.abs(Number(tx.montant)), 0)
+  );
+
+  const isEmpty = transactions.length === 0;
+  const data = isEmpty
+    ? {
+        labels: ["Aucune donnée"],
+        datasets: [
+          {
+            label: "Montant par catégorie",
+            data: [1],
+            backgroundColor: ["#e0e0e0"],
+            borderWidth: 0,
+          },
+        ],
+      }
+    : {
+        labels: uniqueCategories,
+        datasets: [
+          {
+            label: "Montant par catégorie",
+            data: sums,
+            backgroundColor: [
+              "#7e21c9",
+              "#2ecc71",
+              "#4b2bc2",
+              "#f7b731",
+              "#f76e11",
+            ],
+            borderWidth: 0,
+          },
+        ],
+      };
+
   return (
     <div className="p-0md:p-5 flex flex-col w-full max-w-md mx-auto">
       <h2 className="font-semibold mb-4 text-left lg:text-lg">

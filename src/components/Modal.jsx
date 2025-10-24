@@ -100,7 +100,7 @@ export default function Modal({ onClose }) {
               <option value="Logement">Logement</option>
               <option value="Transport">Transport</option>
               <option value="Salaire">Salaire</option>
-              <option value="Autre">Autre</option>
+              <option value="Autre">Loisir</option>
             </select>
           </div>
           <div className="flex flex-col mb-3">

@@ -23,6 +23,15 @@ export default function CategoryChart() {
       .reduce((sum, tx) => sum + Math.abs(Number(tx.montant)), 0)
   );
 
+    const categoriesColors = {
+    Salaire: "#4b2bc2", // bleu
+    Logement: "#f7b731", // jaune
+    Nourriture: "#2ecc71", // vert
+    Transport: "#f76e11", // orange
+    Loisir: "#7e21c9", // mauve
+  };
+  const backgroundColors = uniqueCategories.map(cat => categoriesColors[cat] || "#e0e0e0");
+
   const isEmpty = transactions.length === 0;
   const data = isEmpty
     ? {
@@ -42,17 +51,14 @@ export default function CategoryChart() {
           {
             label: "Montant par catégorie",
             data: sums,
-            backgroundColor: [
-              "#7e21c9",
-              "#2ecc71",
-              "#4b2bc2",
-              "#f7b731",
-              "#f76e11",
-            ],
+            backgroundColor: 
+              backgroundColors,
             borderWidth: 0,
           },
         ],
       };
+
+
 
   return (
     <div className="p-0md:p-5 flex flex-col w-full max-w-md mx-auto">

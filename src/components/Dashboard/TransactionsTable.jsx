@@ -1,8 +1,13 @@
 import { useTransactions } from "../../contexts/TransactionsContext";
 import { FiTrash2 } from "react-icons/fi";
 
-export default function TransactionsTable({ showDelete }) {
+export default function TransactionsTable({ showDelete, onDelete }) {
   const { transactions, deleteTransaction } = useTransactions();
+
+  const handleDelete = (id) => {
+    deleteTransaction(id);
+    if (onDelete) onDelete();
+  };
 
   return (
     <div className="flex flex-col mb-6 w-full">
@@ -52,7 +57,7 @@ export default function TransactionsTable({ showDelete }) {
                     {transaction.categorie}
                   </td>
                   <td
-                    className={`border-b border-gray-100 px-3 md:px-4 py-2 text-right whitespace-nowrap font-semibold ${
+                    className={`border-b border-gray-100 px-3 md:px-4 py-2 text-left whitespace-nowrap font-semibold ${
                       transaction.montant >= 0
                         ? "text-green-600"
                         : "text-red-600"
@@ -66,7 +71,7 @@ export default function TransactionsTable({ showDelete }) {
                   </td>
                   {showDelete && (
                     <td
-                      onClick={() => deleteTransaction(transaction.id)}
+                      onClick={() => handleDelete(transaction.id)}
                       className="text-lg cursor-pointer"
                     >
                       <FiTrash2 />
@@ -90,12 +95,12 @@ export default function TransactionsTable({ showDelete }) {
                   {transaction.date}
                 </span>
                 {showDelete && (
-                  <span
-                    onClick={() => deleteTransaction(transaction.id)}
-                    className="text-lg cursor-pointer text-gray-400 hover:text-red-500"
+                  <td
+                    onClick={() => handleDelete(transaction.id)}
+                    className="text-lg cursor-pointer"
                   >
                     <FiTrash2 />
-                  </span>
+                  </td>
                 )}
               </div>
               <div className="flex flex-col gap-1">

@@ -5,10 +5,12 @@ import "./index.css";
 import { Routes, Route } from "react-router-dom";
 import TransactionsPage from "./TransactionsPage";
 import Paramètres from "./components/Settings";
+import { Toaster } from "react-hot-toast";
 
 function App() {
   return (
     <div className="flex min-h-screen bg-[#fafbfe]">
+      <Toaster />
       <Sidebar />
       <div className="flex-1 p-1 lg:p-8">
         <div className="flex justify-end mb-8">

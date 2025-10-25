@@ -1,6 +1,7 @@
 import StatCard from "./components/Dashboard/StatCard";
 import TransactionsTable from "./components/Dashboard/TransactionsTable";
 import { useTransactions } from "../src/contexts/TransactionsContext";
+import { toast } from "react-hot-toast";
 
 export default function TransactionsPage() {
   const { transactions } = useTransactions();
@@ -19,7 +20,10 @@ export default function TransactionsPage() {
         Transactions
       </h2>
       <div className="bg-white rounded-xl border-2 border-gray-300 p-4">
-        <TransactionsTable showDelete={true} />
+        <TransactionsTable
+          showDelete={true}
+          onDelete={() => toast.error("Transaction supprimée !")}
+        />
       </div>
       <div className="w-full rounded-xl mt-5 grid grid-cols-1 md:grid-cols-2 gap-5">
         <div className="bg-white rounded-xl border-2 border-gray-300 ">

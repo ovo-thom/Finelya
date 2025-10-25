@@ -2,6 +2,7 @@ import { createPortal } from "react-dom";
 import { RxCross2 } from "react-icons/rx";
 import { useTransactions } from "../contexts/TransactionsContext";
 import { useState } from "react";
+import { toast } from "react-hot-toast";
 
 export default function Modal({ onClose }) {
   const [montant, setMontant] = useState("");
@@ -26,6 +27,7 @@ export default function Modal({ onClose }) {
       type,
     };
     addTransaction(transaction);
+    toast.success("Transaction ajoutée !");
     onClose();
   };
 
